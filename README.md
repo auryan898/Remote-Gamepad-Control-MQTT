@@ -17,6 +17,8 @@ It provides a utility to read the gamepad input data sent by `RemoteGamepadServe
 
 ## Installation
 
+You'll need to create an MQTT server, such this one, [mosquitto](https://mosquitto.org/)
+
 Download for usage: `RemoteGamepadServer.java` and `RemoteGamepadClient.java` onto the server and client respectively.  
 All source java files can be downloaded and extracted from the [Latest Release](https://github.com/auryan898/Remote-Gamepad-Control-MQTT/releases).  
 **On server-side, the jar itself can be imported as a dependency. It can be imported client-side, but this is untested.**

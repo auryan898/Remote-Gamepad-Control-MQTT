@@ -18,7 +18,7 @@ public class RemoteGamepadServer {
   protected static long UPDATE_INTERVAL = 0;
 
   protected HashMap<String, GameController> controllers = new HashMap<>();
-  MqttClient client;
+  public MqttClient client;
 
   public RemoteGamepadServer(String hostUrl) {
     this(hostUrl, "PC");

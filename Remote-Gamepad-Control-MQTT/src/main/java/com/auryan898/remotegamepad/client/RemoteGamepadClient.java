@@ -7,10 +7,11 @@ import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.MqttPersistenceException;
 import org.eclipse.paho.client.mqttv3.MqttSecurityException;
 
 public class RemoteGamepadClient implements IMqttMessageListener {
-  MqttClient client;
+  public MqttClient client;
 
   private String deviceName;
   private String controllerName;
@@ -80,6 +81,14 @@ public class RemoteGamepadClient implements IMqttMessageListener {
           gamepadValues.put(keyValue[0], 0f);
         }
       }
+    }
+  }
+  
+  public void sendMessage(String topic, String data) throws MqttPersistenceException, MqttException {
+    if (this.client != null && this.client.isConnected()) {
+      MqttMessage message = new MqttMessage();
+      message.setPayload(data.getBytes());
+      client.publish(topic, message);
     }
   }
 

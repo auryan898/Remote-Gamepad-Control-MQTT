@@ -85,6 +85,7 @@ public class RemoteGamepadServer {
     if (this.client != null && this.client.isConnected()) {
       MqttMessage message = new MqttMessage();
       message.setPayload(this.convertToString(controller).getBytes());
+      message.setQos(0);
       client.publish(key, message);
     }
   }
